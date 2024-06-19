@@ -1,0 +1,14 @@
+<p>
+    This is home page
+</p>
+<% if current_user %>
+    <%= image_tag current_user.avatar_url %>
+    <h2> <%= current_user.fullname %></h2>
+    <%= link_to "Edit Account", edit_user_registration_path %>
+    <%= button_to "Log Out", destroy_user_session_path, data: {turbo: 'false'}, method: :delete%>
+<% else %>
+    <div class="p-4">
+        <%= link_to "Signin", new_user_session_path, class: 'btn px-3 py-1 bg-red-600 text-white rounded-md' %>
+        <%= link_to "Create Account", new_user_registration_path, class: 'btn px-3 py-1 bg-red-600 text-white rounded-md'%>
+    </div>
+<% end %>
